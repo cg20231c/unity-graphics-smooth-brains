@@ -90,22 +90,20 @@ In this section, we are going to give an example how to do basic scripting in Un
 
       ![Alt text](./src/image-8.png)
 
-   * Then, we want to create a new object which is a pistol for the main player. We are going to use the available assets from unity, go to this link and press ``Add to my assets``, https://assetstore.unity.com/packages/3d/props/guns/pbr-pistol-33838 . The website will show the prompt to open the assets in unity, after that press ``import``.
+   * Then, we want to create a new object which is a pistol for the main player. Download the package from repository then import the custom package by right click on the praject window -> click on import package -> click on custom package -> chose the downloaded package.
 
-      ![Alt text](./src/image-7.png)
+      ![image](https://github.com/cg20231c/unity-graphics-smooth-brains/assets/78022264/5e3e67ae-ac28-4908-b7c0-93e44bb26e36)
+      ![image](https://github.com/cg20231c/unity-graphics-smooth-brains/assets/78022264/f88eb75a-600d-4e1d-869e-621e758762cc)
 
-      ![Alt text](./src/image-6.png)
+      After you've imported the asset, a new prefab called ``pistol`` will be shown in the assets window, then drag the pistol ``prefab`` inside the ``main camera``.
 
-      After you've imported the asset, a new folder called ``pistol`` will be shown in the assets window, navigate to the folder, then drag the pistol ``prefab`` inside the ``main camera``.
+      ![image](https://github.com/cg20231c/unity-graphics-smooth-brains/assets/78022264/939e4238-1fdb-4429-aaac-32d63b0e73ed)
 
-      ![Alt text](./src/image-9.png)
+      On the pistol object, right click -> chose prefab -> unpack completely the prefab.
 
-      On the pistol object, unpack the prefab and remove unnecessary objects such as ``bullet``, ``clip``, and ``trigger``.
+      ![image](https://github.com/cg20231c/unity-graphics-smooth-brains/assets/78022264/6d2ca8b2-a609-4c19-8654-af57bfba4492)
 
-      ![Alt text](./src/image-11.png)
-      ![Alt text](./src/image-10.png)
-
-      Then, rescale and reposition the pistol so that it will align with the main camera, just like the image below
+      Then, reposition the pistol if necessary so that it will align with the main camera, just like the image below
 
       ![Alt text](./src/image-12.png)
 
@@ -241,27 +239,22 @@ In this section, we are going to give an example how to do basic scripting in Un
 
       ![Alt text](./src1/image-9.png)
 
-   2. Next you'll need to create a transform position for your bullet to spawn. Put the transform gameObject inside the main Camera gameObject and set the position to align with  the muzzle of the pistol.
-
-      ![Alt text](./src1/image-13.jpeg)
-      ![Alt text](./src1/image-12.jpeg)
-
-   3. Next create a script PlayerShooter in the palyer gameObject. The script is responsible for managing the shooting behavior of the player character.
+   2. Next create a script PlayerShooter in the palyer gameObject. The script is responsible for managing the shooting behavior of the player character.
 
       ![Alt text](./src1/image-11.png)
 
-   4. Next declare the variable for the behavior of the shot. BulletSpeed (the speed of the bullets), shootCooldown (the time delay between shots), and a private boolean canShoot to track whether the player is allowed to shoot.
+   3. Next declare the variable for the behavior of the shot. BulletSpeed (the speed of the bullets), shootCooldown (the time delay between shots), and a private boolean canShoot to track whether the player is allowed to shoot.
       ![Alt text](./src1/image-10.png)
 
-   5. The script references a Transform named firePoint, which represents the position where the bullets will be spawned, and a GameObject named bulletPrefab, which is the prefab for the bullets.
+   4. The script references a Transform named firePoint, which represents the position where the bullets will be spawned, and a GameObject named bulletPrefab, which is the prefab for the bullets.
       ![Alt text](./src1/image-12.png)
 
       ![Alt text](./src1/image-13.png)
 
-   6. In the Update method, it checks if the "Fire1" button (in this case left mouse button) is pressed and if the player is currently allowed to shoot (canShoot is true). If both conditions are met, the Shoot method is called.
+   5. In the Update method, it checks if the "Fire1" button (in this case left mouse button) is pressed and if the player is currently allowed to shoot (canShoot is true). If both conditions are met, the Shoot method is called.
       ![Alt text](./src1/image-14.png)
 
-   7. Next create a shoot method. In the Shoot method:
+   6. Next create a shoot method. In the Shoot method:
 
       A new bullet instance is created using Instantiate, positioned at firePoint.position with the same rotation as firePoint.
       The bullet's Rigidbody component is accessed, and its velocity is set to move it forward with a speed of bulletSpeed.
