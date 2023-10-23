@@ -52,3 +52,102 @@ Unity operates on a component-based architecture, and understanding this basic s
 6. **Scenes**: A scene is a container for your game objects. You can think of a scene as a level or a distinct part of your game. You can have multiple scenes in a Unity project, each representing different parts of your game. Scenes help organize and manage the complexity of larger games and interactive applications.
 
    ![image](https://github.com/cg20231c/unity-graphics-smooth-brains/assets/78022264/765f27e4-aaf3-45b6-9b22-cce7d6727e24)
+
+
+## Make your player move
+
+1. First you'll need to create a player mover script for your player movement.
+you can do that by clicking the add component button inside the inspector or create a script in the project and then adding that script to the player GameObject.
+
+    ![Alt text](./src1/image.png)
+
+2. Next open the script by double clicking the script.
+
+3. Inside the script you'll need to declaring the necessary variables that will control the player's movement. These variables typically include speed or any other factors that affect how the player moves. In this case, we are are only going to use speed.
+
+    ![Alt text](./src1/image-1.png)
+
+    ``[SerializeField]`` is an attribute in Unity's C# scripting that is used to make a private variable visible in the Unity Inspector, allowing you to set its value from the Unity Editor.
+
+3. Next add ``CharacterController`` to the player gameObject.
+
+    ![Alt text](./src1/image-2.png)
+
+4. Next you need to you should obtain a reference to the ``CharacterController`` component that is attached to the player's GameObject. A CharacterController in Unity is a specialized component used for controlling the movement and physics interactions of a character or game object, typically in a 3D game.
+
+    You can do it with two ways :
+    First you can manually attach the component in the unity editor by making the CharacterController a SerializeField.
+
+    ![Alt text](./src1/image-3.png)
+
+    Second, you can automaticly get the component from your game object using the ``getComponent`` method inside the ``start`` method.
+
+    Start(): Called at the beginning of the first frame when a script is enabled. It's often used for initial setup.
+
+    ![Alt text](./src1/image-4.png)
+
+5. Next your script will need to be able to recieve input from the user (in this case keyboard). Using the Input.GetAxis with input vertical and horizontal you will be able to recieve up down left and right arrow key input from user.
+
+    ![Alt text](./src1/image-5.png)
+
+    ``Input.GetAxis`` : is a function in Unity that allows you to retrieve the current value of a specified input axis. 
+    ``Input.GetAxis("Vertical")`` : retrieves the input from the "Vertical" axis, which is typically mapped to the W and S keys (or the Up and Down arrow keys). 
+    ``Input.GetAxis("Horizontal")`` : retrieves the input from the "Horizontal" axis, typically mapped to the A and D keys (or the Left and Right arrow keys).
+
+    ``moveSpeed`` represents the speed at which the game object should move.
+    The result of this calculation, stored in the x and z variable. the x represents the desired movement in the left or right direction. the z represents the desired movement in the forward or backward direction.
+
+6. Next create a method called move (you can named it as you wish). This method will takes a single parameter, dir, which is expected to be a Vector3.
+
+    ![Alt text](./src1/image-6.png)
+
+7. using transform.TransformDirection, dir vector will transforms from local space to global space. In Unity, objects have their local coordinate system, but the Move function of a CharacterController typically expects movement input in global space. By using transform.TransformDirection, the dir vector is converted from local to global space, ensuring that movement is applied correctly.
+
+8. Then multipy the dir by Time.deltaTime. This will makes the movement frame-rate independent, ensuring that the object moves at a consistent rate regardless of the frame rate. 
+
+Now you should be able to move your player.
+
+## Make your player able to shoot
+
+1. First create a sphere object for bullet gameObject in the hierarcy and give a red color to it by using material like before. After that resize the bullet to 0.1 or another size that you seem fit.
+    ![Alt text](./src1/image-7.png)
+
+    ![Alt text](./src1/image-8.png)
+
+    After that put the bullet gameObject to the hierarchy by dragging the gameObject. You will have a prefab for bullet gameObject. In that way you can clone that object as much as you want without having to create the same gameObject all over again.
+
+    ![Alt text](./src1/image-9.png)
+
+2. Next you'll need to create a transform position for your bullet to spawn. Put the transform gameObject inside the main Camera gameObject and set the position to align with  the muzzle of the pistol.
+
+    ![Alt text](./src1/image-13.jpeg)
+    ![Alt text](./src1/image-12.jpeg)
+
+3. Next create a script PlayerShooter in the palyer gameObject. The script is responsible for managing the shooting behavior of the player character.
+
+    ![Alt text](./src1/image-11.png)
+
+4. Next declare the variable for the behavior of the shot. BulletSpeed (the speed of the bullets), shootCooldown (the time delay between shots), and a private boolean canShoot to track whether the player is allowed to shoot.
+    ![Alt text](./src1/image-10.png)
+
+5. The script references a Transform named firePoint, which represents the position where the bullets will be spawned, and a GameObject named bulletPrefab, which is the prefab for the bullets.
+    ![Alt text](./src1/image-12.png)
+
+    ![Alt text](./src1/image-13.png)
+
+6. In the Update method, it checks if the "Fire1" button (in this case left mouse button) is pressed and if the player is currently allowed to shoot (canShoot is true). If both conditions are met, the Shoot method is called.
+    ![Alt text](./src1/image-14.png)
+
+7. Next create a shoot method. In the Shoot method:
+
+    A new bullet instance is created using Instantiate, positioned at firePoint.position with the same rotation as firePoint.
+    The bullet's Rigidbody component is accessed, and its velocity is set to move it forward with a speed of bulletSpeed.
+    The bullet is scheduled for destruction after a certain time (in this case 2 seconds).
+    canShoot is set to false to initiate the shooting cooldown, and StartCoroutine(ShootingCooldown()) is called.
+    ShootingCooldown is a coroutine that waits for the specified shootCooldown time before allowing the player to shoot again. This cooldown prevents rapid consecutive shots.
+
+    ``Instantiate`` is a method in Unity used to create instances (copies) of a GameObject or a Prefab at a specified position and with an optional rotation. It's commonly used for spawning objects during runtime.
+
+    ``StartCoroutine`` is a method used to begin the execution of a coroutine
+    ``IEnumerator`` is an interface commonly used in Unity to create coroutines. Within these methods, you can use yield statements to specify when and for how long the coroutine should pause and return control to the main game loop.
+    ![Alt text](./src1/image-15.png)
