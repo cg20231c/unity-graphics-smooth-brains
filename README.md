@@ -82,11 +82,13 @@ you can do that by clicking the add component button inside the inspector or cre
 
     Second, you can automaticly get the component from your game object using the ``getComponent`` method inside the ``start`` method.
 
-    Start(): Called at the beginning of the first frame when a script is enabled. It's often used for initial setup.
+    ``Start():`` Called at the beginning of the first frame when a script is enabled. It's often used for initial setup.
 
     ![Alt text](./src1/image-4.png)
 
-5. Next your script will need to be able to recieve input from the user (in this case keyboard). Using the Input.GetAxis with input vertical and horizontal you will be able to recieve up down left and right arrow key input from user.
+5. Next your script will need to be able to recieve input from the user (in this case keyboard). Using the Input.GetAxis with input vertical and horizontal in the update method you will be able to recieve up down left and right arrow key input from user.
+
+   ``Update():`` Called once per frame and is commonly used for game logic that needs to run continuously (e.g., character movement).
 
     ![Alt text](./src1/image-5.png)
 
