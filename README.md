@@ -4,6 +4,8 @@ In this meeting we will be discussing about introduction to Unity and Unity basi
 
 ## Getting started with Unity
 
+### Download and create Unity project
+
 1. **Download and Install Unity**: Visit the Unity website (https://unity.com) to download and install the Unity Hub and Unity Editor.
 
 2. **Create a Unity ID**: You'll need a Unity ID to access Unity services and the Unity Asset Store.
