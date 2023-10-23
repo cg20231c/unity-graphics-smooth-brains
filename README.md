@@ -4,8 +4,6 @@ In this meeting we will be discussing about introduction to Unity and Unity basi
 
 ## Getting started with Unity
 
-### Download and create Unity project
-
 1. **Download and Install Unity**: Visit the Unity website (https://unity.com) to download and install the Unity Hub and Unity Editor.
 
 2. **Create a Unity ID**: You'll need a Unity ID to access Unity services and the Unity Asset Store.
@@ -41,10 +39,16 @@ Unity operates on a component-based architecture, and understanding this basic s
 
 1. **Game Objects**: Game objects are the fundamental building blocks of your Unity scenes. These objects can represent characters, items, scenery, cameras, lights, and more. Each game object is a container that holds components, which define its behavior and appearance.
 
-2. **Components**: Components are individual units of functionality that can be attached to game objects. Unity provides a wide range of built-in components like colliders, rigidbodies, cameras, and lights, but you can also create custom components through scripting. Components define various aspects of a game object, such as its appearance, physics behavior, and interactivity.
+   ![image](https://github.com/cg20231c/unity-graphics-smooth-brains/assets/78022264/60c26261-1f1f-44ca-b1ef-f5ec629c85ab)
+
+3. **Components**: Components are individual units of functionality that can be attached to game objects. Unity provides a wide range of built-in components like colliders, rigidbodies, cameras, and lights, but you can also create custom components through scripting. Components define various aspects of a game object, such as its appearance, physics behavior, and interactivity.
    
-![image](https://github.com/cg20231c/unity-graphics-smooth-brains/assets/78022264/0df8075b-c514-47e4-b259-45cb5420c673)
+   ![image](https://github.com/cg20231c/unity-graphics-smooth-brains/assets/78022264/0df8075b-c514-47e4-b259-45cb5420c673)
 
 5. **Scripts**: Unity commonly uses C# (or other supported languages like JavaScript or Boo) for scripting. Scripts allow you to add custom logic and behavior to your game objects. You can write scripts to control how a character moves, how enemies behave, how items are collected, and much more. The scripts can be attached to game objects as components.
 
+   ![image](https://github.com/cg20231c/unity-graphics-smooth-brains/assets/78022264/3f804feb-5b58-4a24-8043-3e8ae9cfe2f5)
+
 6. **Scenes**: A scene is a container for your game objects. You can think of a scene as a level or a distinct part of your game. You can have multiple scenes in a Unity project, each representing different parts of your game. Scenes help organize and manage the complexity of larger games and interactive applications.
+
+   ![image](https://github.com/cg20231c/unity-graphics-smooth-brains/assets/78022264/765f27e4-aaf3-45b6-9b22-cce7d6727e24)
