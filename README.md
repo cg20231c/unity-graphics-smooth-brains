@@ -52,3 +52,130 @@ Unity operates on a component-based architecture, and understanding this basic s
 6. **Scenes**: A scene is a container for your game objects. You can think of a scene as a level or a distinct part of your game. You can have multiple scenes in a Unity project, each representing different parts of your game. Scenes help organize and manage the complexity of larger games and interactive applications.
 
    ![image](https://github.com/cg20231c/unity-graphics-smooth-brains/assets/78022264/765f27e4-aaf3-45b6-9b22-cce7d6727e24)
+
+## Scripting Tutorial in Unity
+### Project Example : First-Person Shooter Game
+
+In this section, we are going to give an example how to do basic scripting in Unity with C# Programming Language. Let's say we want to create a short project / game and the genre of the game is first-person shooter, what should we do first ? Here are the step by step on how to operate Unity with C# as its scripting method inorder to build your first project.
+
+1. **Create a new project** 
+
+   Once you've installed the latest version of Unity Hub, open it and press ``New Project``, you will see a list of templates of unity projects, then choose the 3D Template and rename the project as you wish. After that, press ``Create Project`` and from now on you can work on your project !
+
+   ![Alt text](./src/image.png)
+ 
+2. **Creating Game Objects**
+
+   * After you've created the project, navigate through the ``Hierarchy Window``, you will see 2 objects which is ``Main Camera`` and ``Directional Light``, we should leave that be at first. Then, we want to create a new object by right clicking the Hierarchy Window, press ``3D Objects - Plane``. Planes are often used for creating floors, walls, ceilings, or any other flat surfaces in a    game world. In this context, we want plane as the floor of our player.
+
+      ![Alt text](./src/image-1.png)
+
+   * The next game object we want to create is a capsule, capsules are commonly used primitive shape in game development, mainly for creating characters, characters' hitboxes, or physical colliders. In this context, we want the capsule as our main player. To create it, right click the hierarchy window then press ``3D Objects - Capsule``.
+
+      ![Alt text](./src/image-2.png)
+
+      Make sure to set the position of your capsule's X, Y, and Z inside the ``inspector window`` that is located on the right side. Navigate to ``transform`` component then set the position's value to 0 - 1 - 0. This will make the capsule located right above the plane. In addition, you can also set the capsule's name as you wish, in this case i named it as "Player".
+
+   * You can also change the color of the capsule by creating a new ``material`` in your ``assets window``, right click inside the window then press ``Create - Material``. Next step is to click the material then set the ``albedo`` attribute inside the inspector window, set the color as you wish, i set mine to red.
+
+      ![Alt text](./src/image-3.png)
+
+      Then, drag the new material to the capsule inside the ``scene window``, your capsule / player will turn to the color that you chose earlier.
+
+      ![Alt text](./src/image-4.png)
+
+   * Next step, we want to move the main camera inside the player object, by simply dragging the ``main camera`` inside the ``player``, this will make the player also moves when the main camera is moved. Then, set the camera position inside the capsule by simply dragging the xyz axis.
+
+      ![Alt text](./src/image-5.png)
+
+      ![Alt text](./src/image-8.png)
+
+   * Then, we want to create a new object which is a pistol for the main player. We are going to use the available assets from unity, go to this link and press ``Add to my assets``, https://assetstore.unity.com/packages/3d/props/guns/pbr-pistol-33838 . The website will show the prompt to open the assets in unity, after that press ``import``.
+
+      ![Alt text](./src/image-7.png)
+
+      ![Alt text](./src/image-6.png)
+
+      After you've imported the asset, a new folder called ``pistol`` will be shown in the assets window, navigate to the folder, then drag the pistol ``prefab`` inside the ``main camera``.
+
+      ![Alt text](./src/image-9.png)
+
+      On the pistol object, unpack the prefab and remove unnecessary objects such as ``bullet``, ``clip``, and ``trigger``.
+
+      ![Alt text](./src/image-11.png)
+      ![Alt text](./src/image-10.png)
+
+      Then, rescale and reposition the pistol so that it will align with the main camera, just like the image below
+
+      ![Alt text](./src/image-12.png)
+
+3. **Creating Scripts for Objects**
+
+   * The second script that we are going to create is called ``PlayerLook``, the purpose of this script is to make the player able to move the camera with the mouse. Click on the ``Player`` object then in the inspector window, press ``Add Component`` then type the name of the script.
+
+      ![Alt text](./src/image-13.png)
+
+   * Double click the script inside the component, then vscode will pop-up. 
+
+   * First, we want to create a public float variable called `sens`, this will determines the sensitivity of the mouse movement. It scales the mouse input to control how fast the camera responds to the mouse.
+
+   * Then, create a variable called ``player`` that references to the player's transform, which is typically the GameObject this script is attached to.
+
+   * After that, a variable called ``rotationX`` to manage the rotation around the X-axis (vertical rotation)
+
+   * The last variable is called ``playerCam``, the player's transform, which is typically the GameObject this script is attached to. 
+
+   ```cs
+   public class PlayerLook : MonoBehaviour
+   {
+    public float sens = 2.0f;
+
+    public Transform player;
+
+    private float rotationX = 0;
+
+    [SerializeField] private Transform playerCam;
+   ```
+
+   * Then, inside the ``Start()`` function, we want to get the transform component from player, lock the cursor, and hide it so that the mouse will be focused to the game window.
+
+   ```cs
+   void Start()
+    {
+        player = GetComponent<Transform>();
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+   ```
+
+   * Lastly, in the ``Update()`` function, we want to get the ``mouseX`` and ``mouseY`` axis from unity axes.
+
+   ![Alt text](./src/image-14.png)
+
+   We can see the name is "Mouse X" and "Mouse Y" so we will get the input and multiply it by our ``sens`` variable. In addition, we want to make the ``Mouse Y`` input to negative, since the upper side of the y axis is negative in unity, so we need to make it positive by doing so.
+
+   ```cs
+   float mouseX = Input.GetAxis("Mouse X") * sens;
+   float mouseY = - Input.GetAxis("Mouse Y") * sens;   
+   ```
+
+   * Then, enable the horizontal camera rotation by rotating the ``player`` variable by its up vector (0, 1, 0) and multiply it by the variable ``mouseX``
+
+   ```cs
+   player.Rotate(Vector3.up * mouseX);
+   ```
+
+   * For the vertical camera rotation, the first thing that we want to do is to increment the variable ``rotationX`` with the variable ``mouseY``, then clamp the vertical tilt from range ``-90 to 90``. Lastly, apply the vertical rotation to the camera by using ``Quaternion.Euler`` that represents the vertical rotation. This will rotate the camera vertically while keeping the horizontal rotation unchanged.
+
+   ```cs
+   rotationX += mouseY;
+   rotationX = Mathf.Clamp(rotationX, -90, 90);
+   playerCam.localRotation = Quaternion.Euler(rotationX, 0, 0);
+   ```
+
+
+
+
+
+
+
