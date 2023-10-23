@@ -15,6 +15,8 @@ In this meeting we will be discussing about introduction to Unity and Unity basi
 	- Click "Create Project"
 
 ### Workspace introduction
+![image](https://github.com/cg20231c/unity-graphics-smooth-brains/assets/78022264/b6e0a3fe-558a-4389-ba63-c2abb08842b1)
+
 Unity's workspace consists of various panels and views. Here's an overview:
 
 1. **Scene View**: This is where you design and arrange your game objects within a scene. You can move, rotate, and scale objects using the Scene View.
