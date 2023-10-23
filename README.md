@@ -88,7 +88,7 @@ In this section, we are going to give an example how to do basic scripting in Un
 
       ![Alt text](./src/image-5.png)
 
-      ![Alt text](./src/image-8.png)
+      ![image](https://github.com/cg20231c/unity-graphics-smooth-brains/assets/78022264/9198631c-08c9-411c-a285-3a2bb8de97a0)
 
    * Then, we want to create a new object which is a pistol for the main player. Download the package from repository then import the custom package by right click on the praject window -> click on import package -> click on custom package -> chose the downloaded package.
 
