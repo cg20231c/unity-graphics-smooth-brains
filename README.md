@@ -128,7 +128,7 @@ In this section, we are going to give an example how to do basic scripting in Un
 
       ![Alt text](./src1/image-2.png)
 
-   4. Next you need to you should obtain a reference to the ``CharacterController`` component that is attached to the player's GameObject. A CharacterController in Unity is a specialized component used for controlling the movement and physics interactions of a character or game object, typically in a 3D game.
+   4. Next you'll need obtain a reference to the ``CharacterController`` component that is attached to the player's GameObject. A CharacterController in Unity is a specialized component used for controlling the movement and physics interactions of a character or game object, typically in a 3D game.
 
       You can do it with two ways :
       First you can manually attach the component in the unity editor by making the CharacterController a SerializeField.
