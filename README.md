@@ -174,7 +174,7 @@ In this section, we are going to give an example how to do basic scripting in Un
 
    * Double click the script inside the component, then vscode will pop-up. 
 
-   * First, we want to create a public float variable called `sens`, this will determines the sensitivity of the mouse movement. It scales the mouse input to control how fast the camera responds to the mouse.
+   * First, we want to create a public float variable called `sensitivity`, this will determines the sensitivity of the mouse movement. It scales the mouse input to control how fast the camera responds to the mouse.
 
    * Then, create a variable called ``player`` that references to the player's transform, which is typically the GameObject this script is attached to.
 
@@ -185,7 +185,7 @@ In this section, we are going to give an example how to do basic scripting in Un
    ```cs
    public class PlayerLook : MonoBehaviour
    {
-    public float sens = 2.0f;
+    public float sensitivity = 2.0f;
 
     public Transform player;
 
@@ -209,11 +209,11 @@ In this section, we are going to give an example how to do basic scripting in Un
 
    ![Alt text](./src/image-14.png)
 
-   We can see the name is "Mouse X" and "Mouse Y" so we will get the input and multiply it by our ``sens`` variable. In addition, we want to make the ``Mouse Y`` input to negative, since the upper side of the y axis is negative in unity, so we need to make it positive by doing so.
+   We can see the name is "Mouse X" and "Mouse Y" so we will get the input and multiply it by our ``sensitivity`` variable. In addition, we want to make the ``Mouse Y`` input to negative, since the upper side of the y axis is negative in unity, so we need to make it positive by doing so.
 
    ```cs
-   float mouseX = Input.GetAxis("Mouse X") * sens;
-   float mouseY = - Input.GetAxis("Mouse Y") * sens;   
+   float mouseX = Input.GetAxis("Mouse X") * sensitivity;
+   float mouseY = - Input.GetAxis("Mouse Y") * sensitivity;   
    ```
 
    * Then, enable the horizontal camera rotation by rotating the ``player`` variable by its up vector (0, 1, 0) and multiply it by the variable ``mouseX``
@@ -272,6 +272,7 @@ In this section, we are going to give an example how to do basic scripting in Un
       ``Instantiate`` is a method in Unity used to create instances (copies) of a GameObject or a Prefab at a specified position and with an optional rotation. It's commonly used for spawning objects during runtime.
 
       ``StartCoroutine`` is a method used to begin the execution of a coroutine
+      
       ``IEnumerator`` is an interface commonly used in Unity to create coroutines. Within these methods, you can use yield statements to specify when and for how long the coroutine should pause and return control to the main game loop.
       ![Alt text](./src1/image-15.png)
 
