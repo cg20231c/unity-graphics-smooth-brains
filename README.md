@@ -54,7 +54,7 @@ Unity operates on a component-based architecture, and understanding this basic s
    ![image](https://github.com/cg20231c/unity-graphics-smooth-brains/assets/78022264/765f27e4-aaf3-45b6-9b22-cce7d6727e24)
 
 ## Scripting Tutorial in Unity
-### Project Example : First-Person Shooter Game
+### Project Example : First-Person Shooter Play
 
 In this section, we are going to give an example how to do basic scripting in Unity with C# Programming Language. Let's say we want to create a short project / game and the genre of the game is first-person shooter, what should we do first ? Here are the step by step on how to operate Unity with C# as its scripting method inorder to build your first project.
 
