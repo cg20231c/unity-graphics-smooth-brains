@@ -1,5 +1,11 @@
 # Unity Introduction
 
+| Name  | Student Number |
+| ------------- | ------------- |
+| Muhammad Rafi Insan Fillah | 5025211169 |
+| Ahda Filza Ghaffaru  | 5025211144  |
+| Muhammad Rafi Sutrisno  | 5025211167  |
+
 In this meeting we will be discussing about introduction to Unity and Unity basic scripting. Unity is a powerful and popular game development platform that allows you to create interactive 2D and 3D applications, including games, simulations, virtual reality experiences, and more. It's known for its versatility and user-friendly interface, large community support, and cross-platform capabilities. Its accessibility, combined with powerful 2D and 3D capabilities, makes it a top choice for beginners and experienced developers alike. 
 
 ## Getting started with Unity
